@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(217, 100%, 97%);
+    min-height: 100vh;
+
+}
+.form{
+    width: 900px;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 1px black;
+}
+.form-container{
+    display: flex;
+    padding: 1em;
+}
+.form-sidebar{
+    width: 400px;
+    height: 568px;
+    background-image: url('assets/images/bg-sidebar-desktop.svg');
+    background-repeat: no-repeat;
+    padding: 3em 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.circle{
+    width: 40px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+
+}
+.active .circle{
+    background-color: hsl(206, 94%, 87%);
+    color: hsl(213, 96%, 18%);
+
+}
+.err{
+    border: 2px solid hsl(354, 84%, 57%);
+}
+.step{
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+.step-content{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.step-content span{
+    text-transform: uppercase;
+    color: hsl(229, 24%, 87%);
+    font-size: 13px;
+
+}
+.step-content b{
+    text-transform: uppercase;
+    color: #fff;
+
+}
+.stp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.stp .header{
+    padding-top: 2em;
+    line-height: 2.5em;
+
+}
+.header .title{
+    color: hsl(213, 96%, 18%);
+}
+.header.exp{
+    color: hsl(231, 11%, 63%);
+}
+.next-stp{
+    margin-top: auto;
+    margin-bottom: 2em;
+    margin-left: auto;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 7px;
+    background-color: hsl(213, 96%, 18%);
+    color: #fff;
+    cursor: pointer;
+}
+.step-1{
+    display: none;
+    width: 90%;
+}
+.step-1 form{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    gap: 1em;
+}
+.label{
+    color: hsl(213, 96%, 18%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.step-1 form input{
+    padding: 1em;
+    border: 1px solid hsl(231, 11%, 63%);
+    border-radius: 7px;
+    font-weight: 500;
+    font-size: 1em;
+}
+.step-1 form input:focus{
+    outline-color: hsl(243, 100%, 62%);
+}
+form .error{
+    display: none;
+    color: hsl(354, 84%, 57%);
+    font-size: 1em;
+    font-weight: 700;
+}
+.step-2{
+    display: none;
+    width: 90%;
+}
+.step-3{
+    display: none;
+    width: 90%;
+}
+.step-4{
+    display: none;
+    width: 90%;
+}.step-5{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20vh;
+    padding-right: 1.6vw;
+}
+.step-2 form{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 2em;
+    /* justify-content: space-between; */
+
+}
+.plan-card{
+    width: 150px;
+    height: 170px;
+    border: 2px solid hsl(229, 24%, 87%);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1em;
+    cursor: pointer;
+}
+.plan-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+.plan-info b{
+    color: hsl(213, 96%, 18%);
+}
+.plan-info span{
+    color: hsl(231, 11%, 63%);
+
+}
+.monthly, .yearly{
+    color: hsl(231, 11%, 63%);
+    font-weight: 500;
+}
+.sw-active{
+    color: hsl(213, 96%, 18%);
+
+}
+.btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.prev-stp{
+    margin-top: auto;
+    margin-bottom: 2em;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 7px;
+    background-color: transparent;
+    color: hsl(231, 11%, 63%);
+    cursor: pointer;
+    
+}
+.step-3 form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    gap: 1.5em;
+}
+.box{
+    display: flex;
+    align-items: center;
+    border: 1px solid hsl(231, 11%, 63%);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 1em;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    margin-left: 12px;
+}
+.price{
+    margin-left: auto;
+    color: hsl(243, 100%, 62%);
+}
+.ad-selected{
+    border: 1px solid hsl(243, 100%, 62%);
+    background-color: hsl(217, 100%, 97%);
+}
+.step-3 form input{
+    accent-color: hsl(243, 100%, 62%);
+    transform: scale(1.3);
+    user-select: none;
+}
+.description label{
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
+    user-select: none;
+}
+.description small{
+    color: hsl(231, 11%, 63%);
+    /* font-weight: 700; */
+}
+.selection-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+.selection-container{
+    background-color: hsl(217, 100%, 97%);
+    padding: 1.4rem;
+
+}
+.selected{
+    border: 2px solid hsl(243, 100%, 62%);
+    background-color: hsl(217, 100%, 97%);
+
+}
+.selected-plan{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0;
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
+
+}
+.selected-addon{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0;
+    color: hsl(231, 11%, 63%);
+    font-weight: 500;
+    font-size: 1em;
+}
+.selected-addon .service-price{
+    color: hsl(213, 96%, 18%);
+}
+.total{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem;
+    color: hsl(231, 11%, 63%);
+    
+}
+.total b{
+    color: hsl(243, 100%, 62%);
+    font-size: 1.2em;
+}
+.switcher{
+    background-color: hsl(217, 100%, 97%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 0.5em;
+    margin-bottom: 5em;
+}
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+
+}
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: hsl(213, 96%, 18%);
+    transition: 0.4s;
+}
+.slider::before{
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    background-color: #fff;
+    transition: 0.4s;
+}
+
+input:checked + .slider::before{
+    transform: translateX(26px);
+}
+
+.slider .round{
+    border-radius: 34px;
+}
+.slider .round::before{
+    border-radius: 50%;
+}
+
+
