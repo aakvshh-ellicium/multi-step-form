@@ -6,7 +6,7 @@ const planCards = document.querySelectorAll('.plan-card')
 const prices = document.querySelectorAll('.price')
 const boxes = document.querySelectorAll('.box')
 
-console.log(boxes)
+
 let currentPage = 1
 let isMonthly = true;
 
@@ -14,15 +14,18 @@ const servicePrice = document.getElementById('servicePrice');
 const storagePrice = document.getElementById('storagePrice');
 const customPrice = document.getElementById('customPrice');
 
-formEl.addEventListener('submit', (e) => {
-    e.preventDefault();
+const userData = {
+    name: '',
+    email: '',
+    phone: '',
+    type: 'monthly',
+    planSelected: 'Arcade',
+    planSelectedPrice: '9',
+    addOns: []
 
-    const formData = new FormData(formEl);
+}
 
-    for (item of formData){
-        console.log(item[0], item[1]);
-    }
-})
+
 
 const nextPage = () => {
     if (currentPage < 4){
@@ -53,8 +56,6 @@ const nextPage = () => {
     }
     
 
-    console.log(currentPage)
-
     if (!isMonthly){
         servicePrice.innerHTML = '+$10/yr'
         storagePrice.innerHTML = '+$20/yr'
@@ -66,12 +67,13 @@ const nextPage = () => {
         customPrice.innerHTML = '+$2/mo'
     }
 
+
+
 }
 
 const prevPage = () => {
     if (currentPage <= 4){
         stepOne = document.querySelector(`.step-${currentPage - 1}`)
-        console.log(stepOne)
         stepTwo = document.querySelector(`.step-${currentPage}`)
 
         stepOne.style.display = 'flex'
@@ -92,7 +94,11 @@ const prevPage = () => {
         stepOne.style.display = 'flex'
         stepTwo.style.display = 'none'
     }
-    console.log(currentPage)
+
+    boxes.forEach(box => {
+        boxInput = box.firstElementChild;
+        boxInput.checked = false;
+    });
 
     
 }
@@ -111,8 +117,11 @@ planCards.forEach(e => {
         (planName == 'Advanced' && !isMonthly) && (planPrice = '120');
         (planName == 'Pro' && !isMonthly) && (planPrice = '150');
 
-        console.log(planPrice)
+        console.log(planName, planPrice)
 
+        userData.planSelected = planName;
+        userData.planSelectedPrice = planPrice
+        console.log(userData)
        
     })
 })
@@ -123,78 +132,66 @@ toggle.addEventListener('click', () => {
     const arcadePrice = document.getElementById('arcade')
     const advancedPrice = document.getElementById('advanced')
     const proPrice = document.getElementById('pro')
-    console.log(arcadePrice)
+
     if (isMonthly){
         isMonthly = false
         document.querySelector('.selected').classList.remove('selected')
         planCards[0].classList.add('selected')
-        console.log('first')
+
         arcadePrice.textContent = '$90/yr'
         advancedPrice.textContent = '$120/yr'
         proPrice.textContent = '$150/yr'
+
+        userData.type = 'yearly'
+        userData.planSelectedPrice = '90'
     } else {
         isMonthly = true
         document.querySelector('.selected').classList.remove('selected')
         planCards[0].classList.add('selected')
-        console.log('second')
+
         arcadePrice.textContent = '$9/mo'
         advancedPrice.textContent = '$12/mo'
         proPrice.textContent = '$15/mo'
+
+        userData.type = 'monthly'
     }
+    
 });
-
-
 
 
 
 boxes.forEach(box => {
     box.addEventListener('click', () => {
-       boxInput = box.firstElementChild
-    //    let addonPrice = 0;
+        boxInput = box.firstElementChild;
         let totalAddon = 0;
+        let name = box.lastElementChild.previousElementSibling.firstElementChild.innerHTML
+        console.log(name)
+        let price = box.lastElementChild.innerHTML.replace('+$', '').replace('/mo', '').replace('/yr', '')
+        console.log(price)
        if (boxInput.checked === true){
-            let price = box.lastElementChild.innerHTML.replace('+$', '').replace('/mo', '').replace('/yr', '')
-            console.log(price)
+            userData.addOns.push({name, price})
+       } else {
+            userData.addOns.pop({name, price})
        }
-        
+       console.log(userData)
     })
 })
 
+formEl.addEventListener('submit', (e) => {
+    e.preventDefault(); 
+    const formData = new FormData(formEl);
 
+    for (let [key, value] of formData.entries()){
+        userData[key] = value;
+    }
 
+    console.log(userData)
 
+})
 
-
-
-
-
-
-
-
-
-// if (isMonthly){
-    
-//     boxes.forEach(box => {
-//         box.addEventListener('click', (e) => {
-//             e.preventDefault();
-//             let price = box.lastElementChild.textContent;
-//             const checkbox = document.querySelector('.box input')
-//             // console.log(checkbox)
-//             // checkbox.click;
-            
-//             if (checkbox.checked == true){
-//                 console.log(price)
-//             }
-//             // console.log(box)
-//         })
-//     })
-    
-// }
 
 
 
 nextButton.addEventListener('click', nextPage)
 previousButton.addEventListener('click', prevPage)
 
-
-// console.log(formData)formEl.addEventListener('submit', storeFormData)
